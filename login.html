@@ -209,6 +209,36 @@ async function handleGoogleSignIn(response) {
     showError('Google login failed: ' + error.message);
   }
 }
+window.handleGoogleSignIn = async function (response) {
+  console.log("Google response:", response);
+
+  try {
+    const token = response.credential;
+
+    const res = await fetch(`${API_URL}/api/auth/google`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      alert("Login successful!");
+
+      window.location.href = "dashboard.html";
+    } else {
+      alert(data.message || "Google login failed");
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Google login error");
+  }
+};
 </script>
 
 </body>

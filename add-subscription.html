@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Subscription — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/add-subscription.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" class="logo">Sub<span>ly</span>.</a>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Overview
+      </a>
+      <a href="subscriptions.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Subscriptions
+      </a>
+      <a href="analysis.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+          <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+        </svg>
+        AI Analysis
+      </a>
+      <a href="reports.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        Reports
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">JD</div>
+        <div class="user-details">
+          <p class="user-name">John Doe</p>
+          <p class="user-plan">Pro Plan</p>
+        </div>
+      </div>
+      <a href="index.html" class="logout-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <div class="header-back">
+        <a href="subscriptions.html" class="btn-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Back to Subscriptions
+        </a>
+      </div>
+      <h1>Add New Subscription</h1>
+    </header>
+
+    <!-- FORM SECTION -->
+    <section class="add-form-section">
+      <div class="form-card">
+        <div class="form-header">
+          <h2>Subscription Details</h2>
+          <p>Enter the details of your new subscription below</p>
+        </div>
+        
+        <form class="add-form" id="addSubscriptionForm">
+          
+          <!-- Service Info -->
+          <div class="form-section">
+            <h3 class="section-title">Service Information</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="serviceName">Service Name <span class="required">*</span></label>
+                <input type="text" id="serviceName" name="serviceName" placeholder="e.g., Slack, Zoom, AWS" required>
+              </div>
+              <div class="form-group">
+                <label for="planName">Plan Name</label>
+                <input type="text" id="planName" name="planName" placeholder="e.g., Business+, Pro, Enterprise">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="category">Category <span class="required">*</span></label>
+                <select id="category" name="category" class="form-select" required>
+                  <option value="" disabled selected>Select category</option>
+                  <option value="communication">Communication</option>
+                  <option value="productivity">Productivity</option>
+                  <option value="design">Design</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="cloud">Cloud & Hosting</option>
+                  <option value="development">Development</option>
+                  <option value="analytics">Analytics</option>
+                  <option value="finance">Finance</option>
+                  <option value="hr">HR & Recruiting</option>
+                  <option value="security">Security</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="website">Website URL</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com">
+              </div>
+            </div>
+          </div>
+
+          <!-- Pricing -->
+          <div class="form-section">
+            <h3 class="section-title">Pricing Details</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="price">Price <span class="required">*</span></label>
+                <div class="input-prefix">
+                  <span>$</span>
+                  <input type="number" id="price" name="price" placeholder="0.00" step="0.01" min="0" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="billingCycle">Billing Cycle <span class="required">*</span></label>
+                <select id="billingCycle" name="billingCycle" class="form-select" required>
+                  <option value="monthly" selected>Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="yearly">Yearly</option>
+                  <option value="one-time">One-time</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="currency">Currency</label>
+                <select id="currency" name="currency" class="form-select">
+                  <option value="USD" selected>USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="SAR">SAR (﷼)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nextRenewal">Next Renewal Date <span class="required">*</span></label>
+                <input type="date" id="nextRenewal" name="nextRenewal" required>
+              </div>
+            </div>
+            
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="autoRenewal" checked>
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Auto-renewal is enabled</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Usage -->
+          <div class="form-section">
+            <h3 class="section-title">Usage & Team</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="users">Number of Users</label>
+                <input type="number" id="users" name="users" placeholder="1" min="1" value="1">
+              </div>
+              <div class="form-group">
+                <label for="usageFrequency">Usage Frequency</label>
+                <select id="usageFrequency" name="usageFrequency" class="form-select">
+                  <option value="daily" selected>Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="rarely">Rarely</option>
+                  <option value="never">Never</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="description">Description / Notes</label>
+              <textarea id="description" name="description" rows="3" placeholder="Add any notes about this subscription..."></textarea>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="form-section">
+            <h3 class="section-title">Payment Method</h3>
+            
+            <div class="payment-options">
+              <label class="payment-card">
+                <input type="radio" name="paymentMethod" value="visa" checked>
+                <div class="payment-content">
+                  <div class="payment-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                      <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                  </div>
+                  <div class="payment-info">
+                    <p class="payment-name">Visa ending in 4242</p>
+                    <p class="payment-expiry">Expires 09/2028</p>
+                  </div>
+                </div>
+              </label>
+              
+              <label class="payment-card">
+                <input type="radio" name="paymentMethod" value="mastercard">
+                <div class="payment-content">
+                  <div class="payment-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                      <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                  </div>
+                  <div class="payment-info">
+                    <p class="payment-name">Mastercard ending in 8888</p>
+                    <p class="payment-expiry">Expires 12/2027</p>
+                  </div>
+                </div>
+              </label>
+              
+              <button type="button" class="btn-add-payment">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                Add New Payment Method
+              </button>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <a href="subscriptions.html" class="btn-cancel">Cancel</a>
+            <button type="submit" class="btn-save">Add Subscription</button>
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message hidden" id="successMessage">
+          <div class="success-icon">✓</div>
+          <h3>Subscription Added!</h3>
+          <p>Your subscription has been successfully added to your dashboard.</p>
+          <div class="success-actions">
+            <a href="subscriptions.html" class="btn-view">View All Subscriptions</a>
+            <button class="btn-add-another" onclick="resetForm()">Add Another</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPS -->
+    <section class="tips-section">
+      <h2>Quick Tips</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">💡</div>
+          <h4>Auto-Discovery</h4>
+          <p>Connect your email or bank account in Settings to automatically discover subscriptions.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📊</div>
+          <h4>Track Everything</h4>
+          <p>Include all subscriptions, even small ones. They add up quickly!</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔔</div>
+          <h4>Set Reminders</h4>
+          <p>Enable renewal alerts to avoid surprise charges and review before auto-renew.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Set default date to today + 30 days
+    const today = new Date();
+    const nextMonth = new Date(today.setDate(today.getDate() + 30));
+    document.getElementById('nextRenewal').valueAsDate = nextMonth;
+
+    // Form submission
+    document.getElementById('addSubscriptionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('addSubscriptionForm').classList.add('hidden');
+      document.getElementById('successMessage').classList.remove('hidden');
+    });
+
+    function resetForm() {
+      document.getElementById('addSubscriptionForm').reset();
+      document.getElementById('addSubscriptionForm').classList.remove('hidden');
+      document.getElementById('successMessage').classList.add('hidden');
+      // Reset date
+      const today = new Date();
+      const nextMonth = new Date(today.setDate(today.getDate() + 30));
+      document.getElementById('nextRenewal').valueAsDate = nextMonth;
+    }
+  </script>
+
+</body>
+</html>

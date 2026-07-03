@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Demo — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="logo">Sub<span>ly</span>.</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+    </ul>
+    <button class="btn-nav" onclick="window.location.href='register.html'">Get Started</button>
+  </nav>
+
+  <!-- DEMO HERO -->
+  <section class="demo-hero">
+    <div class="demo-badge">Product Demo</div>
+    <h1>See How <span class="gold-text">Subly</span> Works</h1>
+    <p class="demo-desc">Watch how we help businesses save thousands on unused software subscriptions in under 3 minutes.</p>
+  </section>
+
+  <!-- VIDEO PLAYER -->
+  <section class="video-section">
+    <div class="video-container">
+      <div class="video-placeholder" id="videoPlayer">
+        <div class="play-button" onclick="playVideo()">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="40" fill="#0A0A0A"/>
+            <path d="M52 40L32 52V28L52 40Z" fill="#C9A84C"/>
+          </svg>
+        </div>
+        <p class="video-label">Click to Play Demo</p>
+        <p class="video-duration">3:24</p>
+      </div>
+      
+      <!-- Actual video (hidden until play) -->
+      <div class="video-actual" id="actualVideo" style="display: none;">
+        <iframe 
+          width="100%" 
+          height="100%" 
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
+          title="Subly Demo Video"
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES HIGHLIGHT -->
+  <section class="demo-features">
+    <div class="section-header">
+      <h2>What You'll See</h2>
+      <p>A quick walkthrough of our most powerful features</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-item">
+        <div class="demo-number">01</div>
+        <h3>One-Click Scan</h3>
+        <p>Connect your email and watch Subly automatically discover every subscription you're paying for.</p>
+      </div>
+      <div class="demo-item">
+        <div class="demo-number">02</div>
+        <h3>Smart Analysis</h3>
+        <p>Our AI categorizes each tool, identifies duplicates, and flags unused subscriptions.</p>
+      </div>
+      <div class="demo-item">
+        <div class="demo-number">03</div>
+        <h3>Instant Savings</h3>
+        <p>Review personalized recommendations and cancel unwanted subscriptions with one click.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="demo-testimonial">
+    <div class="testimonial-content">
+      <svg class="quote-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <path d="M14 24C14 20.5 16.5 18 20 18V14C14.5 14 10 18.5 10 24V34H20V24H14ZM34 24C34 20.5 36.5 18 40 18V14C34.5 14 30 18.5 30 24V34H40V24H34Z" fill="#C9A84C"/>
+      </svg>
+      <blockquote>
+        "We discovered we were paying $2,400/year for three different project management tools. Subly found the duplicates in seconds and we cut our software spend by 40%."
+      </blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">SM</div>
+        <div class="author-info">
+          <p class="author-name">Sarah Mitchell</p>
+          <p class="author-title">CFO at TechStart Inc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to Save?</h2>
+    <p>Join 2,000+ businesses already reducing their software spend.</p>
+    <button class="btn-cta" onclick="window.location.href='register.html'">Start Free Trial — No Credit Card</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="logo">Sub<span>ly</span>.</div>
+    <p>2026 Subly. All rights reserved. Built for modern businesses.</p>
+  </footer>
+
+  <script>
+    function playVideo() {
+      document.getElementById('videoPlayer').style.display = 'none';
+      document.getElementById('actualVideo').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

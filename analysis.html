@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Analysis — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/analysis.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo">Sub<span>ly</span>.</div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Overview
+      </a>
+      <a href="subscriptions.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Subscriptions
+      </a>
+      <a href="analysis.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+          <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+        </svg>
+        AI Analysis
+      </a>
+      <a href="reports.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        Reports
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">JD</div>
+        <div class="user-details">
+          <p class="user-name">John Doe</p>
+          <p class="user-plan">Pro Plan</p>
+        </div>
+      </div>
+      <a href="index.html" class="logout-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <h1>AI Analysis</h1>
+      <div class="header-actions">
+        <button class="btn-header btn-gold" onclick="runAnalysis()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+            <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+          </svg>
+          Run New Analysis
+        </button>
+      </div>
+    </header>
+
+    <!-- ANALYSIS SUMMARY -->
+    <section class="analysis-summary">
+      <div class="summary-card">
+        <div class="summary-icon" style="background: #FEF3C7;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="summary-info">
+          <p class="summary-label">Issues Found</p>
+          <p class="summary-value">4</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-icon" style="background: #D1FAE5;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="summary-info">
+          <p class="summary-label">Potential Savings</p>
+          <p class="summary-value">$420/mo</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-icon" style="background: #DBEAFE;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <div class="summary-info">
+          <p class="summary-label">Alternatives Found</p>
+          <p class="summary-value">7</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-icon" style="background: #FCE7F3;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DB2777" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="summary-info">
+          <p class="summary-label">Last Analysis</p>
+          <p class="summary-value">2 days ago</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS LIST -->
+    <section class="insights-list">
+      <div class="section-header-row">
+        <h2>AI Insights</h2>
+        <span class="ai-badge">AI Powered</span>
+      </div>
+
+      <!-- Insight 1: Duplicate -->
+      <div class="insight-card-large duplicate">
+        <div class="insight-header">
+          <div class="insight-type">
+            <span class="type-icon">⚡</span>
+            <span class="type-label">Duplicate Detection</span>
+          </div>
+          <span class="insight-priority high">High Priority</span>
+        </div>
+        <h3>Duplicate Productivity Tools</h3>
+        <p class="insight-desc">You are paying for <strong>Microsoft 365</strong> ($12.50/mo) and <strong>Google Workspace</strong> ($12/mo) with overlapping features. Both include email, cloud storage, and document editing.</p>
+        
+        <div class="insight-comparison">
+          <div class="comparison-item current">
+            <div class="comparison-header">Current</div>
+            <div class="comparison-services">
+              <div class="service-tag">Microsoft 365</div>
+              <div class="service-tag">Google Workspace</div>
+            </div>
+            <div class="comparison-price">$24.50/mo</div>
+          </div>
+          <div class="comparison-arrow">→</div>
+          <div class="comparison-item recommended">
+            <div class="comparison-header">Recommended</div>
+            <div class="comparison-services">
+              <div class="service-tag highlight">Microsoft 365</div>
+            </div>
+            <div class="comparison-price">$12.50/mo</div>
+          </div>
+        </div>
+        
+        <div class="insight-footer">
+          <div class="insight-savings">
+            <span class="savings-label">Monthly Savings:</span>
+            <span class="savings-value">$12.00</span>
+          </div>
+          <div class="insight-actions">
+            <button class="btn-insight-secondary">Learn More</button>
+            <button class="btn-insight-primary">Apply Recommendation</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight 2: Unused -->
+      <div class="insight-card-large unused">
+        <div class="insight-header">
+          <div class="insight-type">
+            <span class="type-icon">🔍</span>
+            <span class="type-label">Usage Analysis</span>
+          </div>
+          <span class="insight-priority medium">Medium Priority</span>
+        </div>
+        <h3>Unused Subscription Detected</h3>
+        <p class="insight-desc"><strong>Zoom Pro</strong> ($14.99/mo) has not been used in 3 months. Your team has switched to Google Meet, which is included in your Google Workspace subscription at no extra cost.</p>
+        
+        <div class="insight-stats">
+          <div class="stat-box">
+            <span class="stat-box-label">Last Used</span>
+            <span class="stat-box-value">April 15, 2026</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-label">Days Unused</span>
+            <span class="stat-box-value">78 days</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-label">Money Wasted</span>
+            <span class="stat-box-value">$44.97</span>
+          </div>
+        </div>
+        
+        <div class="insight-footer">
+          <div class="insight-savings">
+            <span class="savings-label">Monthly Savings:</span>
+            <span class="savings-value">$14.99</span>
+          </div>
+          <div class="insight-actions">
+            <button class="btn-insight-secondary">Keep Subscription</button>
+            <button class="btn-insight-primary btn-danger">Cancel Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight 3: Alternative -->
+      <div class="insight-card-large alternative">
+        <div class="insight-header">
+          <div class="insight-type">
+            <span class="type-icon">💡</span>
+            <span class="type-label">Better Alternative</span>
+          </div>
+          <span class="insight-priority low">Low Priority</span>
+        </div>
+        <h3>Cheaper Alternative Available</h3>
+        <p class="insight-desc">You are using <strong>Adobe Creative Cloud</strong> ($54.99/mo) for basic photo editing. <strong>Canva Pro</strong> offers similar functionality for a fraction of the cost and is already used by your design team.</p>
+        
+        <div class="insight-comparison">
+          <div class="comparison-item current">
+            <div class="comparison-header">Current</div>
+            <div class="comparison-services">
+              <div class="service-tag">Adobe CC</div>
+            </div>
+            <div class="comparison-price">$54.99/mo</div>
+          </div>
+          <div class="comparison-arrow">→</div>
+          <div class="comparison-item recommended">
+            <div class="comparison-header">Alternative</div>
+            <div class="comparison-services">
+              <div class="service-tag highlight">Canva Pro</div>
+            </div>
+            <div class="comparison-price">$12.99/mo</div>
+          </div>
+        </div>
+        
+        <div class="insight-footer">
+          <div class="insight-savings">
+            <span class="savings-label">Monthly Savings:</span>
+            <span class="savings-value">$42.00</span>
+          </div>
+          <div class="insight-actions">
+            <button class="btn-insight-secondary">Compare Features</button>
+            <button class="btn-insight-primary">Switch to Canva</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight 4: Renewal -->
+      <div class="insight-card-large renewal">
+        <div class="insight-header">
+          <div class="insight-type">
+            <span class="type-icon">🔔</span>
+            <span class="type-label">Renewal Alert</span>
+          </div>
+          <span class="insight-priority high">High Priority</span>
+        </div>
+        <h3>Upcoming Renewal — Review Before Auto-Renew</h3>
+        <p class="insight-desc"><strong>Mailchimp Standard</strong> ($85/mo) renews in 7 days. Your email list has decreased by 30% since last year, but you're still paying for the same plan. Consider downgrading to Essentials.</p>
+        
+        <div class="insight-stats">
+          <div class="stat-box">
+            <span class="stat-box-label">Renewal Date</span>
+            <span class="stat-box-value">July 10, 2026</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-label">Days Left</span>
+            <span class="stat-box-value warning">7 days</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-box-label">Current Plan</span>
+            <span class="stat-box-value">Standard (5,000 contacts)</span>
+          </div>
+        </div>
+        
+        <div class="insight-footer">
+          <div class="insight-savings">
+            <span class="savings-label">Potential Savings:</span>
+            <span class="savings-value">$35.00/mo</span>
+          </div>
+          <div class="insight-actions">
+            <button class="btn-insight-secondary">Review Plan</button>
+            <button class="btn-insight-primary">Downgrade Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOTAL SAVINGS -->
+    <section class="total-savings">
+      <div class="savings-card">
+        <div class="savings-icon">🎯</div>
+        <div class="savings-content">
+          <h3>Total Potential Savings</h3>
+          <p class="savings-amount">$420.00<span>/month</span></p>
+          <p class="savings-yearly">That's <strong>$5,040 per year</strong> back in your budget</p>
+        </div>
+        <button class="btn-savings-cta" onclick="window.location.href='subscriptions.html'">
+          Apply All Recommendations
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function runAnalysis() {
+      alert('Running AI analysis... This may take a few moments.');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="logo">Sub<span>ly</span>.</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+    </ul>
+    <button class="btn-nav" onclick="window.location.href='login.html'">Sign In</button>
+  </nav>
+
+  <!-- REGISTER FORM -->
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h1>Create Your Account</h1>
+        <p>Start managing your subscriptions today</p>
+      </div>
+
+      <form class="auth-form" id="registerForm" action="dashboard.html" method="GET">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company Name (Optional)</label>
+          <input type="text" id="company" name="company" placeholder="Your Company">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" required>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" name="terms" required>
+            <span>I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-auth">Create Account</button>
+      </form>
+
+      <div class="auth-divider">
+        <span>or continue with</span>
+      </div>
+
+      <div class="social-login">
+        <button class="btn-social" onclick="window.location.href='dashboard.html'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+          Google
+        </button>
+        <button class="btn-social" onclick="window.location.href='dashboard.html'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+          GitHub
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="logo">Sub<span>ly</span>.</div>
+    <p>2026 Subly. All rights reserved. Built for modern businesses.</p>
+  </footer>
+
+</body>
+</html>

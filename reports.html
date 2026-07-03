@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/reports.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo">Sub<span>ly</span>.</div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Overview
+      </a>
+      <a href="subscriptions.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Subscriptions
+      </a>
+      <a href="analysis.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+          <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+        </svg>
+        AI Analysis
+      </a>
+      <a href="reports.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        Reports
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">JD</div>
+        <div class="user-details">
+          <p class="user-name">John Doe</p>
+          <p class="user-plan">Pro Plan</p>
+        </div>
+      </div>
+      <a href="index.html" class="logout-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <h1>Reports</h1>
+      <div class="header-actions">
+        <button class="btn-header" onclick="exportReport()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Export PDF
+        </button>
+        <button class="btn-header btn-gold" onclick="window.location.href='analysis.html'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+            <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+          </svg>
+          Run AI Analysis
+        </button>
+      </div>
+    </header>
+
+    <!-- DATE FILTER -->
+    <section class="date-filter">
+      <div class="filter-tabs">
+        <button class="filter-tab">Last 30 Days</button>
+        <button class="filter-tab active">Last 90 Days</button>
+        <button class="filter-tab">Last 6 Months</button>
+        <button class="filter-tab">Last Year</button>
+        <button class="filter-tab">Custom Range</button>
+      </div>
+    </section>
+
+    <!-- OVERVIEW STATS -->
+    <section class="reports-overview">
+      <div class="report-card">
+        <div class="report-icon" style="background: #FEF3C7;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="report-info">
+          <p class="report-label">Total Spent</p>
+          <p class="report-value">$3,742.50</p>
+          <p class="report-change up">↑ 12% vs previous period</p>
+        </div>
+      </div>
+      <div class="report-card">
+        <div class="report-icon" style="background: #D1FAE5;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="report-info">
+          <p class="report-label">Total Saved</p>
+          <p class="report-value">$840.00</p>
+          <p class="report-change up">↑ 28% vs previous period</p>
+        </div>
+      </div>
+      <div class="report-card">
+        <div class="report-icon" style="background: #DBEAFE;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <div class="report-info">
+          <p class="report-label">Subscriptions Added</p>
+          <p class="report-value">3</p>
+          <p class="report-change down">↓ 2 vs previous period</p>
+        </div>
+      </div>
+      <div class="report-card">
+        <div class="report-icon" style="background: #FCE7F3;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DB2777" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          </svg>
+        </div>
+        <div class="report-info">
+          <p class="report-label">Subscriptions Cancelled</p>
+          <p class="report-value">2</p>
+          <p class="report-change up">↑ 1 vs previous period</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPENDING CHART -->
+    <section class="chart-section-large">
+      <div class="chart-card-large">
+        <div class="chart-header">
+          <h3>Spending Trends</h3>
+          <div class="chart-legend">
+            <span class="legend-item"><span class="legend-dot" style="background: var(--text-gold);"></span> Actual Spend</span>
+            <span class="legend-item"><span class="legend-dot" style="background: var(--border-light);"></span> Projected</span>
+          </div>
+        </div>
+        <div class="chart-area">
+          <div class="chart-y-axis">
+            <span>$4k</span>
+            <span>$3k</span>
+            <span>$2k</span>
+            <span>$1k</span>
+            <span>$0</span>
+          </div>
+          <div class="chart-bars-large">
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 60%;"></div>
+                <div class="bar projected" style="height: 20%;"></div>
+              </div>
+              <span class="bar-label">Jan</span>
+            </div>
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 55%;"></div>
+                <div class="bar projected" style="height: 25%;"></div>
+              </div>
+              <span class="bar-label">Feb</span>
+            </div>
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 70%;"></div>
+                <div class="bar projected" style="height: 15%;"></div>
+              </div>
+              <span class="bar-label">Mar</span>
+            </div>
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 50%;"></div>
+                <div class="bar projected" style="height: 30%;"></div>
+              </div>
+              <span class="bar-label">Apr</span>
+            </div>
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 65%;"></div>
+                <div class="bar projected" style="height: 20%;"></div>
+              </div>
+              <span class="bar-label">May</span>
+            </div>
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 80%;"></div>
+                <div class="bar projected" style="height: 10%;"></div>
+              </div>
+              <span class="bar-label">Jun</span>
+            </div>
+            <div class="bar-group">
+              <div class="bar-stack">
+                <div class="bar actual" style="height: 75%;"></div>
+                <div class="bar projected" style="height: 15%;"></div>
+              </div>
+              <span class="bar-label">Jul</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY BREAKDOWN -->
+    <section class="category-section">
+      <div class="section-header-row">
+        <h2>Spending by Category</h2>
+        <button class="btn-header">View Details</button>
+      </div>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon" style="background: #635BFF;">C</div>
+            <div class="category-info">
+              <h4>Communication</h4>
+              <p class="category-count">4 subscriptions</p>
+            </div>
+          </div>
+          <div class="category-bar">
+            <div class="category-progress" style="width: 35%; background: #635BFF;"></div>
+          </div>
+          <div class="category-footer">
+            <span class="category-spend">$425.00/mo</span>
+            <span class="category-percent">35%</span>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon" style="background: #FF9900;">P</div>
+            <div class="category-info">
+              <h4>Productivity</h4>
+              <p class="category-count">3 subscriptions</p>
+            </div>
+          </div>
+          <div class="category-bar">
+            <div class="category-progress" style="width: 28%; background: #FF9900;"></div>
+          </div>
+          <div class="category-footer">
+            <span class="category-spend">$340.00/mo</span>
+            <span class="category-percent">28%</span>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon" style="background: #00A4EF;">D</div>
+            <div class="category-info">
+              <h4>Design</h4>
+              <p class="category-count">2 subscriptions</p>
+            </div>
+          </div>
+          <div class="category-bar">
+            <div class="category-progress" style="width: 20%; background: #00A4EF;"></div>
+          </div>
+          <div class="category-footer">
+            <span class="category-spend">$242.50/mo</span>
+            <span class="category-percent">20%</span>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon" style="background: #1DB954;">C</div>
+            <div class="category-info">
+              <h4>Cloud</h4>
+              <p class="category-count">2 subscriptions</p>
+            </div>
+          </div>
+          <div class="category-bar">
+            <div class="category-progress" style="width: 12%; background: #1DB954;"></div>
+          </div>
+          <div class="category-footer">
+            <span class="category-spend">$145.00/mo</span>
+            <span class="category-percent">12%</span>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon" style="background: #DB2777;">M</div>
+            <div class="category-info">
+              <h4>Marketing</h4>
+              <p class="category-count">1 subscription</p>
+            </div>
+          </div>
+          <div class="category-bar">
+            <div class="category-progress" style="width: 5%; background: #DB2777;"></div>
+          </div>
+          <div class="category-footer">
+            <span class="category-spend">$62.50/mo</span>
+            <span class="category-percent">5%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP SUBSCRIPTIONS TABLE -->
+    <section class="top-subscriptions">
+      <div class="section-header-row">
+        <h2>Top Spending</h2>
+        <a href="subscriptions.html" class="view-all">View All →</a>
+      </div>
+      <div class="top-table">
+        <div class="top-header">
+          <span class="top-rank">#</span>
+          <span class="top-service">Service</span>
+          <span class="top-category">Category</span>
+          <span class="top-monthly">Monthly</span>
+          <span class="top-annual">Annual</span>
+          <span class="top-trend">Trend</span>
+        </div>
+        <div class="top-row">
+          <span class="top-rank">1</span>
+          <div class="top-service-cell">
+            <div class="service-icon" style="background: #FF9900;">A</div>
+            <span class="service-name">AWS</span>
+          </div>
+          <span class="top-category tag">Cloud</span>
+          <span class="top-monthly">$340.00</span>
+          <span class="top-annual">$4,080.00</span>
+          <span class="top-trend up">↑ 15%</span>
+        </div>
+        <div class="top-row">
+          <span class="top-rank">2</span>
+          <div class="top-service-cell">
+            <div class="service-icon" style="background: #F24E1E;">A</div>
+            <span class="service-name">Adobe CC</span>
+          </div>
+          <span class="top-category tag">Design</span>
+          <span class="top-monthly">$54.99</span>
+          <span class="top-annual">$659.88</span>
+          <span class="top-trend stable">—</span>
+        </div>
+        <div class="top-row">
+          <span class="top-rank">3</span>
+          <div class="top-service-cell">
+            <div class="service-icon" style="background: #E01E5A;">M</div>
+            <span class="service-name">Mailchimp</span>
+          </div>
+          <span class="top-category tag">Marketing</span>
+          <span class="top-monthly">$85.00</span>
+          <span class="top-annual">$1,020.00</span>
+          <span class="top-trend down">↓ 8%</span>
+        </div>
+        <div class="top-row">
+          <span class="top-rank">4</span>
+          <div class="top-service-cell">
+            <div class="service-icon" style="background: #00C4CC;">C</div>
+            <span class="service-name">Canva</span>
+          </div>
+          <span class="top-category tag">Design</span>
+          <span class="top-monthly">$29.99</span>
+          <span class="top-annual">$359.88</span>
+          <span class="top-trend up">↑ 5%</span>
+        </div>
+        <div class="top-row">
+          <span class="top-rank">5</span>
+          <div class="top-service-cell">
+            <div class="service-icon" style="background: #635BFF;">S</div>
+            <span class="service-name">Slack</span>
+          </div>
+          <span class="top-category tag">Communication</span>
+          <span class="top-monthly">$15.00</span>
+          <span class="top-annual">$180.00</span>
+          <span class="top-trend stable">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAVINGS HISTORY -->
+    <section class="savings-history">
+      <div class="section-header-row">
+        <h2>Savings History</h2>
+        <span class="total-saved-badge">$5,040 saved total</span>
+      </div>
+      <div class="savings-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background: #059669;"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h4>Cancelled Zoom Pro</h4>
+              <span class="timeline-savings">+$179.88/yr</span>
+            </div>
+            <p class="timeline-desc">Unused for 3 months. Team switched to Google Meet.</p>
+            <span class="timeline-date">June 15, 2026</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background: #059669;"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h4>Downgraded Mailchimp</h4>
+              <span class="timeline-savings">+$420.00/yr</span>
+            </div>
+            <p class="timeline-desc">Switched from Standard to Essentials plan. List decreased by 30%.</p>
+            <span class="timeline-date">May 22, 2026</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background: #059669;"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h4>Consolidated Productivity Tools</h4>
+              <span class="timeline-savings">+$360.00/yr</span>
+            </div>
+            <p class="timeline-desc">Merged Microsoft 365 and Google Workspace into one platform.</p>
+            <span class="timeline-date">April 10, 2026</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background: #059669;"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h4>Switched to Canva Pro</h4>
+              <span class="timeline-savings">+$504.00/yr</span>
+            </div>
+            <p class="timeline-desc">Replaced Adobe Creative Cloud with Canva for basic design needs.</p>
+            <span class="timeline-date">March 5, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function exportReport() {
+      alert('Generating PDF report... This may take a few moments.');
+    }
+  </script>
+
+</body>
+</html>

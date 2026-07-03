@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscriptions — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/subscriptions.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo">Sub<span>ly</span>.</div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Overview
+      </a>
+      <a href="subscriptions.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Subscriptions
+      </a>
+      <a href="analysis.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+          <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+        </svg>
+        AI Analysis
+      </a>
+      <a href="reports.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        Reports
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">JD</div>
+        <div class="user-details">
+          <p class="user-name">John Doe</p>
+          <p class="user-plan">Pro Plan</p>
+        </div>
+      </div>
+      <a href="index.html" class="logout-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <h1>Subscriptions</h1>
+      <div class="header-actions">
+        <button class="btn-header" onclick="window.location.href='add-subscription.html'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Subscription
+        </button>
+      </div>
+    </header>
+
+    <!-- FILTERS -->
+    <section class="filters-section">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" placeholder="Search subscriptions..." id="searchInput">
+      </div>
+      <div class="filter-group">
+        <select class="filter-select">
+          <option>All Categories</option>
+          <option>Communication</option>
+          <option>Productivity</option>
+          <option>Cloud</option>
+          <option>Design</option>
+          <option>Marketing</option>
+        </select>
+        <select class="filter-select">
+          <option>All Status</option>
+          <option>Active</option>
+          <option>Unused</option>
+          <option>Duplicate</option>
+          <option>Expiring Soon</option>
+        </select>
+        <select class="filter-select">
+          <option>Sort by: Name</option>
+          <option>Sort by: Price (High)</option>
+          <option>Sort by: Price (Low)</option>
+          <option>Sort by: Renewal Date</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- SUBSCRIPTIONS LIST -->
+    <section class="subscriptions-list">
+      <div class="list-header">
+        <span class="col-service">Service</span>
+        <span class="col-category">Category</span>
+        <span class="col-price">Price</span>
+        <span class="col-renewal">Renewal</span>
+        <span class="col-users">Users</span>
+        <span class="col-status">Status</span>
+        <span class="col-action">Action</span>
+      </div>
+
+      <!-- Subscription 1 -->
+      <div class="list-row">
+        <div class="col-service">
+          <div class="service-icon" style="background: #635BFF;">S</div>
+          <div class="service-info">
+            <p class="service-name">Slack</p>
+            <p class="service-plan">Business+</p>
+          </div>
+        </div>
+        <span class="col-category tag">Communication</span>
+        <span class="col-price">$15.00/mo</span>
+        <span class="col-renewal">Aug 15, 2026</span>
+        <span class="col-users">12 users</span>
+        <span class="col-status status-badge active">Active</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 2 -->
+      <div class="list-row">
+        <div class="col-service">
+          <div class="service-icon" style="background: #FF9900;">A</div>
+          <div class="service-info">
+            <p class="service-name">AWS</p>
+            <p class="service-plan">Pay-as-you-go</p>
+          </div>
+        </div>
+        <span class="col-category tag">Cloud</span>
+        <span class="col-price">$340.00/mo</span>
+        <span class="col-renewal">Aug 22, 2026</span>
+        <span class="col-users">—</span>
+        <span class="col-status status-badge active">Active</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 3 - Duplicate -->
+      <div class="list-row duplicate">
+        <div class="col-service">
+          <div class="service-icon" style="background: #00A4EF;">O</div>
+          <div class="service-info">
+            <p class="service-name">Microsoft 365</p>
+            <p class="service-plan">Business Standard</p>
+          </div>
+        </div>
+        <span class="col-category tag">Productivity</span>
+        <span class="col-price">$12.50/mo</span>
+        <span class="col-renewal">Sep 1, 2026</span>
+        <span class="col-users">8 users</span>
+        <span class="col-status status-badge duplicate">⚠️ Duplicate</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 4 -->
+      <div class="list-row">
+        <div class="col-service">
+          <div class="service-icon" style="background: #1DB954;">N</div>
+          <div class="service-info">
+            <p class="service-name">Notion</p>
+            <p class="service-plan">Team</p>
+          </div>
+        </div>
+        <span class="col-category tag">Productivity</span>
+        <span class="col-price">$10.00/mo</span>
+        <span class="col-renewal">Sep 5, 2026</span>
+        <span class="col-users">6 users</span>
+        <span class="col-status status-badge active">Active</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 5 - Unused -->
+      <div class="list-row unused">
+        <div class="col-service">
+          <div class="service-icon" style="background: #6B6B6B; opacity: 0.5;">Z</div>
+          <div class="service-info">
+            <p class="service-name">Zoom</p>
+            <p class="service-plan">Pro</p>
+          </div>
+        </div>
+        <span class="col-category tag">Communication</span>
+        <span class="col-price">$14.99/mo</span>
+        <span class="col-renewal">Oct 10, 2026</span>
+        <span class="col-users">2 users</span>
+        <span class="col-status status-badge unused">Unused 3mo</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 6 -->
+      <div class="list-row">
+        <div class="col-service">
+          <div class="service-icon" style="background: #F24E1E;">F</div>
+          <div class="service-info">
+            <p class="service-name">Figma</p>
+            <p class="service-plan">Professional</p>
+          </div>
+        </div>
+        <span class="col-category tag">Design</span>
+        <span class="col-price">$45.00/mo</span>
+        <span class="col-renewal">Oct 15, 2026</span>
+        <span class="col-users">4 users</span>
+        <span class="col-status status-badge active">Active</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 7 -->
+      <div class="list-row">
+        <div class="col-service">
+          <div class="service-icon" style="background: #00C4CC;">C</div>
+          <div class="service-info">
+            <p class="service-name">Canva</p>
+            <p class="service-plan">Teams</p>
+          </div>
+        </div>
+        <span class="col-category tag">Design</span>
+        <span class="col-price">$29.99/mo</span>
+        <span class="col-renewal">Oct 20, 2026</span>
+        <span class="col-users">10 users</span>
+        <span class="col-status status-badge active">Active</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription 8 - Expiring Soon -->
+      <div class="list-row expiring">
+        <div class="col-service">
+          <div class="service-icon" style="background: #E01E5A;">M</div>
+          <div class="service-info">
+            <p class="service-name">Mailchimp</p>
+            <p class="service-plan">Standard</p>
+          </div>
+        </div>
+        <span class="col-category tag">Marketing</span>
+        <span class="col-price">$85.00/mo</span>
+        <span class="col-renewal">Jul 10, 2026</span>
+        <span class="col-users">3 users</span>
+        <span class="col-status status-badge expiring">⏰ 7 Days</span>
+        <div class="col-action">
+          <button class="btn-icon" title="Edit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="btn-icon btn-danger" title="Delete">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGINATION -->
+    <section class="pagination">
+      <button class="btn-page disabled">← Previous</button>
+      <div class="page-numbers">
+        <button class="page-num active">1</button>
+        <button class="page-num">2</button>
+        <button class="page-num">3</button>
+        <span class="page-dots">...</span>
+        <button class="page-num">12</button>
+      </div>
+      <button class="btn-page">Next →</button>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="summary-section">
+      <div class="summary-card">
+        <div class="summary-item">
+          <span class="summary-label">Total Subscriptions</span>
+          <span class="summary-value">14</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-item">
+          <span class="summary-label">Monthly Spend</span>
+          <span class="summary-value">$1,247.48</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-item">
+          <span class="summary-label">Annual Spend</span>
+          <span class="summary-value">$14,969.76</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-item highlight">
+          <span class="summary-label">Potential Savings</span>
+          <span class="summary-value gold">$420.00</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Subly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pricing.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">Sub<span>ly</span>.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="btn-nav" onclick="window.location.href='register.html'">Get Started</button>
+  </nav>
+
+  <!-- PRICING HERO -->
+  <section class="pricing-hero">
+    <div class="pricing-badge">Simple Pricing</div>
+    <h1>Choose Your <span class="gold-text">Plan</span></h1>
+    <p class="pricing-desc">Start free, upgrade when you're ready. No hidden fees, no surprises. Cancel anytime.</p>
+    
+    <!-- Billing Toggle -->
+    <div class="billing-toggle">
+      <span class="toggle-label active" id="monthlyLabel">Monthly</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billingToggle" onchange="toggleBilling()">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="yearlyLabel">Yearly</span>
+      <span class="save-badge">Save 20%</span>
+    </div>
+  </section>
+
+  <!-- PRICING CARDS -->
+  <section class="pricing-cards">
+    <div class="pricing-grid">
+      
+      <!-- Starter Plan -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3>Starter</h3>
+          <p class="plan-subtitle">For individuals getting started</p>
+        </div>
+        <div class="plan-price">
+          <span class="price-symbol">$</span>
+          <span class="price-amount" id="starterPrice">0</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p class="plan-billing" id="starterBilling">Free forever</p>
+        <button class="btn-plan-secondary" onclick="window.location.href='register.html'">Get Started Free</button>
+        <div class="plan-features">
+          <h4>What's included:</h4>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Up to 5 subscriptions
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Basic spending reports
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Manual entry only
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Email support
+            </li>
+            <li class="feature-disabled">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              AI-powered insights
+            </li>
+            <li class="feature-disabled">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Duplicate detection
+            </li>
+            <li class="feature-disabled">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Renewal alerts
+            </li>
+            <li class="feature-disabled">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Team management
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Professional Plan -->
+      <div class="plan-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-header">
+          <h3>Professional</h3>
+          <p class="plan-subtitle">For growing businesses</p>
+        </div>
+        <div class="plan-price">
+          <span class="price-symbol">$</span>
+          <span class="price-amount" id="proPrice">29</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p class="plan-billing" id="proBilling">Billed monthly</p>
+        <button class="btn-plan-primary" onclick="window.location.href='register.html'">Start Free Trial</button>
+        <div class="plan-features">
+          <h4>Everything in Starter, plus:</h4>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Unlimited subscriptions
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              AI-powered insights
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Duplicate detection
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Renewal alerts (7 days)
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Advanced analytics
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Priority email support
+            </li>
+            <li class="feature-disabled">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Team management
+            </li>
+            <li class="feature-disabled">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Custom integrations
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Business Plan -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3>Business</h3>
+          <p class="plan-subtitle">For teams and enterprises</p>
+        </div>
+        <div class="plan-price">
+          <span class="price-symbol">$</span>
+          <span class="price-amount" id="businessPrice">79</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p class="plan-billing" id="businessBilling">Billed monthly</p>
+        <button class="btn-plan-secondary" onclick="window.location.href='contact.html'">Contact Sales</button>
+        <div class="plan-features">
+          <h4>Everything in Pro, plus:</h4>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Unlimited team members
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Role-based access
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              API access
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Custom integrations
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              SSO & SAML
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Dedicated account manager
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              24/7 phone support
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Custom contracts
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="comparison-section">
+    <div class="section-header">
+      <h2>Full Feature Comparison</h2>
+      <p>Compare all features across plans</p>
+    </div>
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Starter</th>
+            <th>Professional</th>
+            <th>Business</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-name">Subscriptions tracked</td>
+            <td>5</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Team members</td>
+            <td>1</td>
+            <td>1</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td class="feature-name">AI-powered insights</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="feature-name">Duplicate detection</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="feature-name">Renewal alerts</td>
+            <td>—</td>
+            <td>7 days</td>
+            <td>30 days</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Spending analytics</td>
+            <td>Basic</td>
+            <td>Advanced</td>
+            <td>Custom</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Email integrations</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="feature-name">Bank integrations</td>
+            <td>—</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="feature-name">API access</td>
+            <td>—</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="feature-name">SSO / SAML</td>
+            <td>—</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+          <tr>
+            <td class="feature-name">Support</td>
+            <td>Email</td>
+            <td>Priority Email</td>
+            <td>24/7 Phone + Email</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Account manager</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Dedicated</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Custom contracts</td>
+            <td>—</td>
+            <td>—</td>
+            <td>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pricing-faq">
+    <div class="section-header">
+      <h2>Pricing FAQ</h2>
+      <p>Common questions about our plans</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Can I switch plans later?</h4>
+        <p>Yes, you can upgrade or downgrade at any time. Changes take effect immediately, and we'll prorate any difference.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there a free trial?</h4>
+        <p>Yes! Professional plan includes a 14-day free trial with no credit card required. Business plan includes a 30-day trial.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What happens if I exceed my plan limits?</h4>
+        <p>We'll notify you when you're approaching your limit. You can upgrade instantly or archive old subscriptions to stay within your plan.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you offer refunds?</h4>
+        <p>We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied, contact us for a full refund.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I pay yearly?</h4>
+        <p>Yes! Annual billing saves you 20%. You can switch between monthly and annual billing at any time.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What payment methods do you accept?</h4>
+        <p>We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and bank transfers for Business plans.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE CTA -->
+  <section class="enterprise-cta">
+    <div class="enterprise-content">
+      <h2>Need a Custom Solution?</h2>
+      <p>For organizations with 100+ employees or unique requirements, we offer custom enterprise packages with dedicated support, SLA guarantees, and tailored integrations.</p>
+      <div class="enterprise-actions">
+        <button class="btn-enterprise" onclick="window.location.href='contact.html'">Contact Sales</button>
+        <a href="demo.html" class="btn-demo-link">Watch Demo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Start Saving Today</h2>
+    <p>Join 2,000+ businesses already reducing their software spend by 30% on average.</p>
+    <button class="btn-cta" onclick="window.location.href='register.html'">Get Started Free</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Sub<span>ly</span>.</a>
+        <p>Smart subscription management for modern businesses.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Product</h4>
+          <a href="index.html#features">Features</a>
+          <a href="demo.html">Demo</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="footer-column">
+          <h4>Account</h4>
+          <a href="login.html">Sign In</a>
+          <a href="register.html">Create Account</a>
+          <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2026 Subly. All rights reserved. Built for modern businesses.</p>
+    </div>
+  </footer>
+
+  <script>
+    let isYearly = false;
+    
+    function toggleBilling() {
+      isYearly = !isYearly;
+      
+      const monthlyLabel = document.getElementById('monthlyLabel');
+      const yearlyLabel = document.getElementById('yearlyLabel');
+      const starterPrice = document.getElementById('starterPrice');
+      const proPrice = document.getElementById('proPrice');
+      const businessPrice = document.getElementById('businessPrice');
+      const starterBilling = document.getElementById('starterBilling');
+      const proBilling = document.getElementById('proBilling');
+      const businessBilling = document.getElementById('businessBilling');
+      
+      if (isYearly) {
+        monthlyLabel.classList.remove('active');
+        yearlyLabel.classList.add('active');
+        starterPrice.textContent = '0';
+        proPrice.textContent = '23';
+        businessPrice.textContent = '63';
+        starterBilling.textContent = 'Free forever';
+        proBilling.textContent = 'Billed yearly ($276/yr)';
+        businessBilling.textContent = 'Billed yearly ($756/yr)';
+      } else {
+        monthlyLabel.classList.add('active');
+        yearlyLabel.classList.remove('active');
+        starterPrice.textContent = '0';
+        proPrice.textContent = '29';
+        businessPrice.textContent = '79';
+        starterBilling.textContent = 'Free forever';
+        proBilling.textContent = 'Billed monthly';
+        businessBilling.textContent = 'Billed monthly';
+      }
+    }
+  </script>
+
+</body>
+</html>

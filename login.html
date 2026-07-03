@@ -1,245 +1,338 @@
-<!DOCTYPE html>
+
+# Create the complete login.html with embedded JavaScript
+login_html = '''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In — Subly</title>
-
-  <!-- Google Auth -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/auth.css">
-
   <style>
-    .error-message {
-      background: #fee2e2;
-      color: #dc2626;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      display: none;
+    .error-message { 
+      background: #fee2e2; 
+      color: #dc2626; 
+      padding: 12px 16px; 
+      border-radius: 8px; 
+      margin-bottom: 16px; 
+      font-size: 14px;
+      display: none; 
     }
     .error-message.show { display: block; }
-
-    .success-message {
-      background: #d1fae5;
-      color: #059669;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      display: none;
+    
+    .success-message { 
+      background: #d1fae5; 
+      color: #059669; 
+      padding: 12px 16px; 
+      border-radius: 8px; 
+      margin-bottom: 16px; 
+      font-size: 14px;
+      display: none; 
     }
     .success-message.show { display: block; }
+    
+    .btn-auth:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .google-btn-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
-
 <body class="auth-page">
 
-<nav class="navbar">
-  <div class="logo">Sub<span>ly</span>.</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#features">Features</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
-  </ul>
-  <button class="btn-nav" onclick="window.location.href='register.html'">
-    Get Started
-  </button>
-</nav>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="logo">Sub<span>ly</span>.</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+    </ul>
+    <button class="btn-nav" onclick="window.location.href='register.html'">Get Started</button>
+  </nav>
 
-<section class="auth-section">
-  <div class="auth-container">
-
-    <div class="auth-header">
-      <h1>Welcome Back</h1>
-      <p>Sign in to manage your subscriptions</p>
-    </div>
-
-    <div id="errorMessage" class="error-message"></div>
-    <div id="successMessage" class="success-message"></div>
-
-    <!-- Google Login -->
-    <div id="g_id_onload"
-         data-client_id="377715947782-aagkirvgigig15prljcq4705t3h53s41.apps.googleusercontent.com"
-         data-callback="handleGoogleSignIn"
-         data-auto_prompt="false">
-    </div>
-
-    <div class="g_id_signin"
-         data-type="standard"
-         data-size="large"
-         data-theme="outline"
-         data-text="sign_in_with"
-         data-shape="rectangular"
-         data-logo_alignment="left">
-    </div>
-
-    <div class="auth-divider">
-      <span>or sign in with email</span>
-    </div>
-
-    <!-- Email Login -->
-    <form class="auth-form" id="loginForm">
-
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="email" required>
+  <!-- LOGIN FORM -->
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to manage your subscriptions</p>
       </div>
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="password" required>
+      <!-- Error Message -->
+      <div id="loginError" class="error-message"></div>
+      
+      <!-- Success Message -->
+      <div id="loginSuccess" class="success-message"></div>
+
+      <!-- Google Sign-In -->
+      <div class="google-btn-container">
+        <div id="g_id_onload"
+             data-client_id="377715947782-aagkirvgigig15prljcq4705t3h53s41.apps.googleusercontent.com"
+             data-callback="handleGoogleSignIn"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-size="large"
+             data-theme="outline"
+             data-text="sign_in_with"
+             data-shape="rectangular"
+             data-logo_alignment="left">
+        </div>
       </div>
 
-      <div class="form-options">
-        <label>
-          <input type="checkbox" id="rememberMe">
-          Remember me
-        </label>
+      <div class="auth-divider">
+        <span>or sign in with email</span>
       </div>
 
-      <button type="submit" class="btn-auth" id="submitBtn">
-        Sign In
-      </button>
+      <form class="auth-form" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" name="email" placeholder="you@company.com" required>
+        </div>
 
-    </form>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+        </div>
 
-  </div>
-</section>
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe" name="remember">
+            <span>Remember me</span>
+          </label>
+          <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+        </div>
 
-<footer class="footer">
-  <div class="logo">Sub<span>ly</span>.</div>
-  <p>2026 Subly. All rights reserved.</p>
-</footer>
+        <button type="submit" class="btn-auth" id="loginSubmitBtn">Sign In</button>
+      </form>
 
-<script src="js/api.js"></script>
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="register.html">Create one</a></p>
+      </div>
+    </div>
+  </section>
 
-<script>
-const API_URL = 'https://subly-api-production-2b44.up.railway.app';
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="logo">Sub<span>ly</span>.</div>
+    <p>2026 Subly. All rights reserved. Built for modern businesses.</p>
+  </footer>
 
-/* =========================
-   SHOW MESSAGES
-========================= */
-function showError(msg) {
-  const el = document.getElementById('errorMessage');
-  el.textContent = msg;
-  el.classList.add('show');
-}
-
-function showSuccess(msg) {
-  const el = document.getElementById('successMessage');
-  el.textContent = msg;
-  el.classList.add('show');
-}
-
-/* =========================
-   EMAIL LOGIN
-========================= */
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const submitBtn = document.getElementById('submitBtn');
-
-  submitBtn.textContent = 'Signing in...';
-  submitBtn.disabled = true;
-
-  try {
-    const data = await api.login(email, password);
-
-    if (data.success) {
-      // SAVE AUTH
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-
-      showSuccess('Login successful! Redirecting...');
-
-      setTimeout(() => {
-        window.location.href = 'dashboard.html';
-      }, 800);
-
-    } else {
-      showError(data.message || 'Login failed');
+  <!-- ALL JAVASCRIPT EMBEDDED - NO EXTERNAL FILES NEEDED -->
+  <script>
+  (function() {
+    'use strict';
+    
+    const API_URL = 'https://subly-api-production-2b44.up.railway.app';
+    
+    // Check if already logged in
+    if (localStorage.getItem('token')) {
+      console.log('Already logged in, redirecting...');
+      window.location.href = 'dashboard.html';
+      return;
     }
-
-  } catch (error) {
-    showError(error.message || 'Network error');
-  } finally {
-    submitBtn.textContent = 'Sign In';
-    submitBtn.disabled = false;
-  }
-});
-
-/* =========================
-   GOOGLE LOGIN (FIXED)
-========================= */
-async function handleGoogleSignIn(response) {
-  console.log('Google response:', response);
-
-  try {
-    const token = response.credential;
-
-    const res = await fetch(`${API_URL}/api/auth/google`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token })
+    
+    // Get elements
+    const loginForm = document.getElementById('loginForm');
+    const errorEl = document.getElementById('loginError');
+    const successEl = document.getElementById('loginSuccess');
+    const submitBtn = document.getElementById('loginSubmitBtn');
+    
+    console.log('Login page loaded');
+    
+    // Auto-fill remembered email
+    const rememberedEmail = localStorage.getItem('rememberEmail');
+    if (rememberedEmail) {
+      document.getElementById('loginEmail').value = rememberedEmail;
+      document.getElementById('rememberMe').checked = true;
+    }
+    
+    // Show error helper
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+      successEl.style.display = 'none';
+      console.error('Error:', msg);
+    }
+    
+    // Show success helper
+    function showSuccess(msg) {
+      successEl.textContent = msg;
+      successEl.style.display = 'block';
+      errorEl.style.display = 'none';
+      console.log('Success:', msg);
+    }
+    
+    // Set loading state
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      if (isLoading) {
+        submitBtn.innerHTML = '<span class="loading-spinner"></span>Signing in...';
+      } else {
+        submitBtn.textContent = 'Sign In';
+      }
+    }
+    
+    // Handle form submit
+    loginForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      console.log('Form submitted!');
+      
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const remember = document.getElementById('rememberMe').checked;
+      
+      console.log('Values:', { email, password: '***', remember });
+      
+      // Reset messages
+      errorEl.style.display = 'none';
+      errorEl.textContent = '';
+      successEl.style.display = 'none';
+      successEl.textContent = '';
+      
+      // Validation
+      if (!email) {
+        showError('Please enter your email address');
+        return;
+      }
+      
+      if (!email.includes('@')) {
+        showError('Please enter a valid email address');
+        return;
+      }
+      
+      if (!password) {
+        showError('Please enter your password');
+        return;
+      }
+      
+      // Loading state
+      setLoading(true);
+      
+      try {
+        console.log('Sending login request...');
+        
+        const response = await fetch(API_URL + '/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        
+        console.log('Response status:', response.status);
+        const data = await response.json();
+        console.log('Response data:', data);
+        
+        if (data.success) {
+          // Save auth data
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          
+          // Save remember preference
+          if (remember) {
+            localStorage.setItem('rememberEmail', email);
+          } else {
+            localStorage.removeItem('rememberEmail');
+          }
+          
+          showSuccess('Login successful! Redirecting...');
+          
+          // Redirect to dashboard
+          setTimeout(function() {
+            window.location.href = 'dashboard.html';
+          }, 1000);
+        } else {
+          showError(data.message || 'Invalid email or password');
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        showError('Network error. Please check your connection and try again.');
+      } finally {
+        setLoading(false);
+      }
     });
-
-    const data = await res.json();
-
-    if (data.success) {
-      // SAVE AUTH
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-
-      showSuccess('Google login successful! Redirecting...');
-
-      setTimeout(() => {
-        window.location.href = 'dashboard.html';
-      }, 800);
-
-    } else {
-      showError(data.message || 'Google login failed');
-    }
-
-  } catch (error) {
-    console.error(error);
-    showError('Google login failed: ' + error.message);
-  }
-}
-window.handleGoogleSignIn = async function (response) {
-  console.log("Google response:", response);
-
-  try {
-    const token = response.credential;
-
-    const res = await fetch(`${API_URL}/api/auth/google`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-
-      alert("Login successful!");
-
-      window.location.href = "dashboard.html";
-    } else {
-      alert(data.message || "Google login failed");
-    }
-
-  } catch (err) {
-    console.error(err);
-    alert("Google login error");
-  }
-};
-</script>
-
+    
+    // Google Sign-In Handler
+    window.handleGoogleSignIn = async function(response) {
+      console.log('Google sign-in started');
+      
+      try {
+        const token = response.credential;
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        
+        console.log('Google user:', payload.email);
+        
+        const res = await fetch(API_URL + '/api/auth/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            token: token,
+            email: payload.email,
+            name: payload.name,
+            picture: payload.picture
+          })
+        });
+        
+        const data = await res.json();
+        console.log('Backend response:', data);
+        
+        if (data.success) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          showSuccess('Google login successful! Redirecting...');
+          
+          setTimeout(function() {
+            window.location.href = 'dashboard.html';
+          }, 1000);
+        } else {
+          showError(data.message || 'Google login failed');
+        }
+      } catch (error) {
+        console.error('Google error:', error);
+        showError('Google login failed. Please try again.');
+      }
+    };
+    
+    // Health check on load
+    fetch(API_URL + '/api/health')
+      .then(r => r.json())
+      .then(data => console.log('Backend status:', data.message))
+      .catch(err => console.warn('Backend not reachable:', err));
+      
+  })();
+  </script>
 </body>
-</html>
+</html>'''
+
+with open("/mnt/agents/output/login.html", "w", encoding="utf-8") as f:
+    f.write(login_html)
+
+print("✅ login.html created successfully!")
+print(f"File size: {len(login_html)} characters")
+

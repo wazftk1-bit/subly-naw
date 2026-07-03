@@ -9,6 +9,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/auth.css">
+  <style>
+    .error-message { 
+      background: #fee2e2; 
+      color: #dc2626; 
+      padding: 12px; 
+      border-radius: 8px; 
+      margin-bottom: 16px; 
+      font-size: 14px;
+      display: none; 
+    }
+    .error-message.show { display: block; }
+
+    .success-message { 
+      background: #d1fae5; 
+      color: #059669; 
+      padding: 12px; 
+      border-radius: 8px; 
+      margin-bottom: 16px; 
+      font-size: 14px;
+      display: none; 
+    }
+    .success-message.show { display: block; }
+
+    .btn-auth:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-social:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+<base target="_blank">
 </head>
 <body class="auth-page">
 
@@ -31,7 +81,13 @@
         <p>Start managing your subscriptions today</p>
       </div>
 
-      <form class="auth-form" id="registerForm" action="dashboard.html" method="GET">
+      <!-- Error Message -->
+      <div id="errorMessage" class="error-message"></div>
+
+      <!-- Success Message -->
+      <div id="successMessage" class="success-message"></div>
+
+      <form class="auth-form" id="registerForm">
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name</label>
@@ -55,7 +111,7 @@
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+          <input type="password" id="password" name="password" placeholder="Min. 6 characters" required minlength="6">
         </div>
 
         <div class="form-group">
@@ -65,12 +121,12 @@
 
         <div class="form-options">
           <label class="remember-me">
-            <input type="checkbox" name="terms" required>
+            <input type="checkbox" name="terms" id="terms" required>
             <span>I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></span>
           </label>
         </div>
 
-        <button type="submit" class="btn-auth">Create Account</button>
+        <button type="submit" class="btn-auth" id="submitBtn">Create Account</button>
       </form>
 
       <div class="auth-divider">
@@ -78,13 +134,13 @@
       </div>
 
       <div class="social-login">
-        <button class="btn-social" onclick="window.location.href='dashboard.html'">
+        <button class="btn-social" disabled title="Coming soon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
           </svg>
           Google
         </button>
-        <button class="btn-social" onclick="window.location.href='dashboard.html'">
+        <button class="btn-social" disabled title="Coming soon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
           </svg>
@@ -104,5 +160,121 @@
     <p>2026 Subly. All rights reserved. Built for modern businesses.</p>
   </footer>
 
+  <!-- API Client -->
+  <script src="js/api.js"></script>
+
+  <!-- Register Logic -->
+  <script>
+  (function() {
+    // Get elements
+    const form = document.getElementById('registerForm');
+    const errorEl = document.getElementById('errorMessage');
+    const successEl = document.getElementById('successMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    console.log('Register script loaded');
+    console.log('Form found:', !!form);
+    console.log('Submit button found:', !!submitBtn);
+
+    // Show error helper
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.classList.add('show');
+      successEl.classList.remove('show');
+      console.error('Error:', msg);
+    }
+
+    // Show success helper
+    function showSuccess(msg) {
+      successEl.textContent = msg;
+      successEl.classList.add('show');
+      errorEl.classList.remove('show');
+      console.log('Success:', msg);
+    }
+
+    // Form submit handler
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      console.log('Form submitted!');
+
+      // Get values
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const terms = document.getElementById('terms').checked;
+
+      console.log('Values:', { firstName, lastName, email, password: '***', confirmPassword: '***', terms });
+
+      // Reset messages
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      successEl.classList.remove('show');
+      successEl.textContent = '';
+
+      // Validation
+      if (!firstName || !lastName) {
+        showError('Please enter your full name');
+        return;
+      }
+
+      if (!email || !email.includes('@')) {
+        showError('Please enter a valid email address');
+        return;
+      }
+
+      if (password.length < 6) {
+        showError('Password must be at least 6 characters');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showError('Passwords do not match');
+        return;
+      }
+
+      if (!terms) {
+        showError('Please agree to the Terms of Service');
+        return;
+      }
+
+      // Check if api is available
+      if (typeof api === 'undefined') {
+        showError('API not loaded. Please refresh the page.');
+        console.error('api is undefined!');
+        return;
+      }
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner"></span>Creating account...';
+
+      try {
+        console.log('Calling api.register...');
+        const fullName = firstName + ' ' + lastName;
+        const data = await api.register(fullName, email, password);
+        console.log('Register response:', data);
+
+        if (data.success) {
+          showSuccess('Account created successfully! Redirecting...');
+
+          // Redirect to dashboard after 1.5 seconds
+          setTimeout(function() {
+            window.location.href = 'dashboard.html';
+          }, 1500);
+        } else {
+          showError(data.message || 'Failed to create account');
+        }
+      } catch (error) {
+        console.error('Register error:', error);
+        showError(error.message || 'Network error. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Account';
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

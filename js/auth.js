@@ -1,9 +1,6 @@
 /* ============================================================
    Subly Auth Module - Login & Register Handler
-   Handles authentication flow and redirects
    ============================================================ */
-
-const API_URL = 'https://subly-api-production-2b44.up.railway.app';
 
 const Auth = {
   // Check if user is logged in
@@ -44,7 +41,6 @@ const Auth = {
     const el = document.getElementById(elementId);
     if (el) {
       el.textContent = message;
-      el.classList.add('show');
       el.style.display = 'block';
     }
     console.error('Auth Error:', message);
@@ -54,7 +50,6 @@ const Auth = {
   hideError(elementId) {
     const el = document.getElementById(elementId);
     if (el) {
-      el.classList.remove('show');
       el.style.display = 'none';
       el.textContent = '';
     }
@@ -65,7 +60,6 @@ const Auth = {
     const el = document.getElementById(elementId);
     if (el) {
       el.textContent = message;
-      el.classList.add('show');
       el.style.display = 'block';
     }
     console.log('Auth Success:', message);
@@ -78,9 +72,9 @@ const Auth = {
       btn.disabled = isLoading;
       if (isLoading) {
         btn.dataset.originalText = btn.textContent;
-        btn.innerHTML = `<span class="loading-spinner"></span>${loadingText}`;
+        btn.innerHTML = '<span class="loading-spinner"></span>' + loadingText;
       } else {
-        btn.textContent = btn.dataset.originalText || btn.textContent;
+        btn.textContent = btn.dataset.originalText || 'Submit';
       }
     }
   },
@@ -90,14 +84,10 @@ const Auth = {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   },
 
-  // Validate password (min 6 chars)
-  isValidPassword(password) {
-    return password && password.length >= 6;
-  },
-
   // Handle login form submission
   async handleLogin(event) {
     event.preventDefault();
+    console.log('=== LOGIN STARTED ===');
 
     const errorEl = 'loginError';
     const successEl = 'loginSuccess';
@@ -110,40 +100,65 @@ const Auth = {
     const password = document.getElementById('loginPassword')?.value;
     const remember = document.getElementById('rememberMe')?.checked;
 
-    if (!email) return this.showError(errorEl, 'Please enter your email');
-    if (!this.isValidEmail(email)) return this.showError(errorEl, 'Invalid email');
-    if (!password) return this.showError(errorEl, 'Please enter password');
+    console.log('Login values:', { email, password: password ? '***' : 'empty' });
+
+    if (!email) {
+      this.showError(errorEl, 'Please enter your email address');
+      return;
+    }
+
+    if (!this.isValidEmail(email)) {
+      this.showError(errorEl, 'Please enter a valid email address');
+      return;
+    }
+
+    if (!password) {
+      this.showError(errorEl, 'Please enter your password');
+      return;
+    }
 
     this.setLoading(submitBtn, true, 'Signing in...');
 
     try {
-      const data = await api.login(email, password);
+      console.log('Calling API login...');
+      
+      // Direct fetch instead of api.login
+      const response = await fetch('https://subly-api-production-2b44.up.railway.app/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      
+      const data = await response.json();
+      console.log('Login response:', data);
 
       if (data.success) {
         this.saveAuth(data.token, data.user);
 
         if (remember) {
           localStorage.setItem('rememberEmail', email);
-        } else {
-          localStorage.removeItem('rememberEmail');
         }
 
-        this.showSuccess(successEl, 'Login successful!');
-        setTimeout(() => this.redirectToDashboard(), 1000);
-      } else {
-        this.showError(errorEl, data.message || 'Login failed');
-      }
+        this.showSuccess(successEl, 'Login successful! Redirecting...');
 
+        setTimeout(() => {
+          this.redirectToDashboard();
+        }, 1000);
+      } else {
+        this.showError(errorEl, data.message || 'Invalid email or password');
+      }
     } catch (error) {
-      this.showError(errorEl, error.message || 'Network error');
+      console.error('Login error:', error);
+      this.showError(errorEl, 'Network error. Please try again.');
     } finally {
       this.setLoading(submitBtn, false);
     }
   },
 
-  // Handle register form
+  // Handle register form submission
   async handleRegister(event) {
     event.preventDefault();
+    console.log('=== REGISTER STARTED ===');
 
     const errorEl = 'registerError';
     const successEl = 'registerSuccess';
@@ -159,117 +174,121 @@ const Auth = {
     const confirmPassword = document.getElementById('confirmPassword')?.value;
     const terms = document.getElementById('terms')?.checked;
 
-    if (!firstName || !lastName)
-      return this.showError(errorEl, 'Enter full name');
+    console.log('Register values:', { firstName, lastName, email });
 
-    if (!email || !this.isValidEmail(email))
-      return this.showError(errorEl, 'Invalid email');
+    if (!firstName || !lastName) {
+      this.showError(errorEl, 'Please enter your full name');
+      return;
+    }
 
-    if (!this.isValidPassword(password))
-      return this.showError(errorEl, 'Password must be 6+ chars');
+    if (!email || !this.isValidEmail(email)) {
+      this.showError(errorEl, 'Please enter a valid email address');
+      return;
+    }
 
-    if (password !== confirmPassword)
-      return this.showError(errorEl, 'Passwords do not match');
+    if (!password || password.length < 6) {
+      this.showError(errorEl, 'Password must be at least 6 characters');
+      return;
+    }
 
-    if (!terms)
-      return this.showError(errorEl, 'Accept terms first');
+    if (password !== confirmPassword) {
+      this.showError(errorEl, 'Passwords do not match');
+      return;
+    }
+
+    if (!terms) {
+      this.showError(errorEl, 'Please agree to the Terms of Service');
+      return;
+    }
 
     this.setLoading(submitBtn, true, 'Creating account...');
 
     try {
-      const data = await api.register(firstName + ' ' + lastName, email, password);
+      const fullName = firstName + ' ' + lastName;
+      console.log('Calling API register...');
+
+      // Direct fetch instead of api.register
+      const response = await fetch('https://subly-api-production-2b44.up.railway.app/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: fullName, email, password })
+      });
+      
+      const data = await response.json();
+      console.log('Register response:', data);
 
       if (data.success) {
         this.saveAuth(data.token, data.user);
+        this.showSuccess(successEl, 'Account created! Redirecting...');
 
-        this.showSuccess(successEl, 'Account created!');
-        setTimeout(() => this.redirectToDashboard(), 1500);
+        setTimeout(() => {
+          this.redirectToDashboard();
+        }, 1500);
       } else {
-        this.showError(errorEl, data.message || 'Register failed');
+        this.showError(errorEl, data.message || 'Failed to create account');
       }
-
     } catch (error) {
-      this.showError(errorEl, error.message || 'Network error');
+      console.error('Register error:', error);
+      this.showError(errorEl, 'Network error. Please try again.');
     } finally {
       this.setLoading(submitBtn, false);
     }
   },
 
-  // Logout
+  // Handle logout
   handleLogout() {
+    console.log('=== LOGOUT ===');
     this.clearAuth();
     this.redirectToLogin();
   },
 
-  // Google Sign-In (FIXED)
-  async handleGoogleSignIn(googleResponse) {
-    const errorEl = 'loginError';
-    const successEl = 'loginSuccess';
-
-    this.hideError(errorEl);
-    this.hideError(successEl);
-
-    try {
-      const token = googleResponse.credential;
-
-      const res = await fetch(`${API_URL}/api/auth/google`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token })
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        this.saveAuth(data.token, data.user);
-        this.showSuccess(successEl, 'Google login successful!');
-
-        setTimeout(() => this.redirectToDashboard(), 1000);
-      } else {
-        this.showError(errorEl, data.message || 'Google login failed');
-      }
-
-    } catch (error) {
-      this.showError(errorEl, 'Google login failed: ' + error.message);
-    }
-  },
-
-  // Auto-fill email
-  autoFillRememberedEmail() {
-    const email = localStorage.getItem('rememberEmail');
-    if (email) {
-      const input = document.getElementById('loginEmail');
-      if (input) input.value = email;
-    }
-  },
-
-  // Init
+  // Initialize auth module
   init() {
-    this.autoFillRememberedEmail();
+    console.log('=== AUTH MODULE INITIALIZED ===');
 
-    const page = window.location.pathname.split('/').pop();
-    if ((page === 'login.html' || page === 'register.html') && this.isLoggedIn()) {
+    // Auto-fill remembered email
+    const rememberedEmail = localStorage.getItem('rememberEmail');
+    if (rememberedEmail) {
+      const emailInput = document.getElementById('loginEmail');
+      if (emailInput) {
+        emailInput.value = rememberedEmail;
+        document.getElementById('rememberMe').checked = true;
+      }
+    }
+
+    // Check if already logged in on auth pages
+    const currentPage = window.location.pathname.split('/').pop();
+    if ((currentPage === 'login.html' || currentPage === 'register.html') && this.isLoggedIn()) {
+      console.log('Already logged in, redirecting...');
       this.redirectToDashboard();
       return;
     }
 
+    // Attach event listeners
     this.attachEventListeners();
   },
 
-  // Events
+  // Attach event listeners
   attachEventListeners() {
     const loginForm = document.getElementById('loginForm');
-    if (loginForm) loginForm.addEventListener('submit', e => this.handleLogin(e));
+    if (loginForm) {
+      console.log('Login form found');
+      loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+    }
 
     const registerForm = document.getElementById('registerForm');
-    if (registerForm) registerForm.addEventListener('submit', e => this.handleRegister(e));
-
-    document.querySelectorAll('[data-action="logout"]').forEach(btn => {
-      btn.addEventListener('click', () => this.handleLogout());
-    });
+    if (registerForm) {
+      console.log('Register form found');
+      registerForm.addEventListener('submit', (e) => this.handleRegister(e));
+    }
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Auth.init());
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => Auth.init());
+} else {
+  Auth.init();
+}
 
 window.Auth = Auth;

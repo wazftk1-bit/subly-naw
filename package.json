@@ -1,9 +1,0 @@
-{
-  "name": "subly",
-  "version": "1.0.0",
-  "description": "Smart Subscription Manager",
-  "dependencies": {
-    "openai": "^4.0.0",
-    "stripe": "^14.0.0"
-  }
-}

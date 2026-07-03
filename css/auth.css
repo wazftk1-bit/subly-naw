@@ -1,0 +1,235 @@
+/* ============================================
+   SUBLY — AUTHENTICATION STYLES
+   Login & Register Pages
+   ============================================ */
+
+/* ====== AUTH PAGE LAYOUT ====== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: var(--bg-cream);
+}
+
+/* ====== AUTH CONTAINER ====== */
+.auth-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 64px 48px;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ====== AUTH HEADER ====== */
+.auth-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.auth-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.auth-header p {
+  font-size: 16px;
+  color: var(--text-gray);
+  font-weight: 300;
+}
+
+/* ====== FORM ====== */
+.auth-form {
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+  font-size: 15px;
+  color: var(--text-dark);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--text-gold);
+}
+
+.form-group input::placeholder {
+  color: var(--text-gray);
+  opacity: 0.6;
+}
+
+/* ====== FORM OPTIONS ====== */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--text-gold);
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: var(--text-gold);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: var(--text-gold-dark);
+  text-decoration: underline;
+}
+
+/* ====== AUTH BUTTON ====== */
+.btn-auth {
+  width: 100%;
+  background: var(--btn-black);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-auth:hover {
+  background: var(--btn-black-hover);
+  transform: translateY(-1px);
+}
+
+/* ====== DIVIDER ====== */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
+.auth-divider span {
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ====== SOCIAL LOGIN ====== */
+.social-login {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.btn-social {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-social:hover {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+}
+
+.btn-social svg {
+  color: var(--text-gray);
+}
+
+/* ====== AUTH FOOTER ====== */
+.auth-footer {
+  text-align: center;
+}
+
+.auth-footer p {
+  font-size: 15px;
+  color: var(--text-gray);
+}
+
+.auth-footer a {
+  color: var(--text-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.auth-footer a:hover {
+  color: var(--text-gold-dark);
+  text-decoration: underline;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 48px 24px;
+    border: none;
+  }
+  
+  .auth-header h1 {
+    font-size: 28px;
+  }
+  
+  .social-login {
+    flex-direction: column;
+  }
+}

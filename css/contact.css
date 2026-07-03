@@ -1,0 +1,590 @@
+/* ============================================
+   SUBLY — CONTACT PAGE STYLES
+   (contact.html only)
+   ============================================ */
+
+/* ====== CONTACT HERO ====== */
+.contact-hero {
+  text-align: center;
+  padding: 100px 48px 60px;
+  background: var(--bg-cream);
+}
+
+.contact-badge {
+  display: inline-block;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  padding: 8px 20px;
+  font-size: 12px;
+  color: var(--text-gold);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.contact-hero h1 {
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.gold-text {
+  color: var(--text-gold);
+  font-style: italic;
+}
+
+.contact-desc {
+  font-size: 18px;
+  color: var(--text-gray);
+  max-width: 520px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ====== CONTACT CONTENT ====== */
+.contact-content {
+  padding: 80px 48px;
+  background: var(--bg-white);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ====== CONTACT INFO ====== */
+.contact-info h2 {
+  font-size: 28px;
+  color: var(--text-dark);
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.contact-intro {
+  font-size: 16px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.info-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-details h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.info-details a {
+  font-size: 15px;
+  color: var(--text-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.info-details a:hover {
+  color: var(--text-gold-dark);
+  text-decoration: underline;
+}
+
+.info-details p {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+/* Social Links */
+.social-links h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-cream);
+  border: 1px solid var(--border-light);
+  color: var(--text-gray);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--text-gold);
+  border-color: var(--text-gold);
+  color: white;
+}
+
+/* ====== CONTACT FORM ====== */
+.form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 48px;
+}
+
+.form-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.form-header h2 {
+  font-size: 24px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  font-size: 15px;
+  color: var(--text-gray);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-form.hidden {
+  display: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+  font-size: 15px;
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--text-gold);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-gray);
+  opacity: 0.6;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B6B6B' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* Checkbox */
+.checkbox-group {
+  margin-top: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkmark {
+  background: var(--text-gold);
+  border-color: var(--text-gold);
+}
+
+.checkmark::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkmark::after {
+  opacity: 1;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.5;
+}
+
+/* Submit Button */
+.btn-submit {
+  background: var(--btn-black);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.btn-submit:hover {
+  background: var(--btn-black-hover);
+  transform: translateY(-1px);
+}
+
+/* Success Message */
+.form-success {
+  text-align: center;
+  padding: 48px 24px;
+  animation: fadeIn 0.5s ease;
+}
+
+.form-success.hidden {
+  display: none;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--text-gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 auto 24px;
+}
+
+.form-success h3 {
+  font-size: 24px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.form-success p {
+  font-size: 15px;
+  color: var(--text-gray);
+  margin-bottom: 32px;
+}
+
+.btn-new-message {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-new-message:hover {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+}
+
+/* ====== FAQ SECTION ====== */
+.faq-section {
+  padding: 100px 48px;
+  background: var(--bg-cream);
+}
+
+.faq-section .section-header {
+  margin-bottom: 48px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.faq-item h4 {
+  font-size: 18px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.faq-item p {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+/* ====== CTA ====== */
+.cta {
+  padding: 120px 48px;
+  text-align: center;
+  background: var(--btn-black);
+}
+
+.cta h2 {
+  font-size: 48px;
+  color: var(--text-gold);
+  margin-bottom: 24px;
+}
+
+.cta p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+
+.btn-cta {
+  background: var(--text-gold);
+  color: var(--btn-black);
+  border: none;
+  padding: 18px 48px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: var(--text-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+}
+
+/* ====== FOOTER ====== */
+.footer {
+  background: var(--bg-cream);
+  border-top: 1px solid var(--border-light);
+  padding: 80px 48px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 80px;
+  padding-bottom: 60px;
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-brand .logo {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-brand p {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+.footer-links {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  font-size: 14px;
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: var(--text-gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-light);
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 80px 24px 40px;
+  }
+  
+  .contact-hero h1 {
+    font-size: 36px;
+  }
+  
+  .contact-content {
+    padding: 48px 24px;
+  }
+  
+  .form-card {
+    padding: 32px 24px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .faq-section {
+    padding: 60px 24px;
+  }
+  
+  .cta {
+    padding: 80px 24px;
+  }
+  
+  .cta h2 {
+    font-size: 36px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 48px;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 32px;
+  }
+}

@@ -1,0 +1,175 @@
+/* ============================================
+   SUBLY — PRIVACY POLICY STYLES
+   ============================================ */
+
+/* ====== PRIVACY HERO ====== */
+.privacy-hero {
+  text-align: center;
+  padding: 120px 48px 60px;
+  background: var(--bg-cream);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.privacy-hero .hero-badge {
+  display: inline-block;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  padding: 8px 20px;
+  font-size: 12px;
+  color: var(--text-gold);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.privacy-hero h1 {
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -1.5px;
+}
+
+.privacy-hero p {
+  font-size: 16px;
+  color: var(--text-gray);
+  font-weight: 300;
+}
+
+/* ====== PRIVACY CONTENT ====== */
+.privacy-content {
+  padding: 80px 48px;
+  background: var(--bg-white);
+}
+
+.privacy-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.privacy-intro {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ====== PRIVACY SECTIONS ====== */
+.privacy-section {
+  margin-bottom: 56px;
+}
+
+.privacy-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.privacy-section h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: var(--text-dark);
+  margin: 28px 0 12px;
+  font-weight: 600;
+}
+
+.privacy-section p {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.privacy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.privacy-section ul li {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.8;
+  padding: 8px 0 8px 28px;
+  position: relative;
+}
+
+.privacy-section ul li::before {
+  content: '•';
+  color: var(--text-gold);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.privacy-section a {
+  color: var(--text-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.privacy-section a:hover {
+  color: var(--text-gold-dark);
+  text-decoration: underline;
+}
+
+.privacy-section strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* ====== FOOTER LINKS ====== */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 16px 0 24px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--text-gold);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .privacy-hero {
+    padding: 80px 24px 40px;
+  }
+  
+  .privacy-hero h1 {
+    font-size: 36px;
+  }
+  
+  .privacy-content {
+    padding: 48px 24px;
+  }
+  
+  .privacy-section h2 {
+    font-size: 22px;
+  }
+  
+  .privacy-section h3 {
+    font-size: 15px;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

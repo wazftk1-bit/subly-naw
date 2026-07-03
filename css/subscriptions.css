@@ -1,0 +1,362 @@
+/* ============================================
+   SUBLY — SUBSCRIPTIONS PAGE STYLES
+   (subscriptions.html only)
+   ============================================ */
+
+/* ====== FILTERS ====== */
+.filters-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 12px 16px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-box svg {
+  color: var(--text-gray);
+  flex-shrink: 0;
+}
+
+.search-box input {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: var(--text-dark);
+  width: 100%;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: var(--text-gray);
+}
+
+.filter-group {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-select {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text-dark);
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:focus {
+  border-color: var(--text-gold);
+}
+
+/* ====== SUBSCRIPTIONS LIST ====== */
+.subscriptions-list {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  margin-bottom: 24px;
+}
+
+.list-header {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 16px 24px;
+  background: var(--bg-cream);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-gray);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.list-row {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 20px 24px;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.3s ease;
+}
+
+.list-row:hover {
+  background: var(--bg-cream);
+}
+
+.list-row.duplicate {
+  background: rgba(254, 243, 199, 0.3);
+  border-left: 3px solid var(--text-gold);
+}
+
+.list-row.unused {
+  opacity: 0.7;
+  background: rgba(243, 244, 246, 0.5);
+}
+
+.list-row.expiring {
+  background: rgba(254, 226, 226, 0.3);
+  border-left: 3px solid #DC2626;
+}
+
+/* Columns */
+.col-service {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.col-category {
+  justify-self: start;
+}
+
+.col-price {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.col-renewal {
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+.col-users {
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+.col-action {
+  display: flex;
+  gap: 8px;
+  justify-self: end;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  justify-self: start;
+}
+
+.status-badge.active {
+  background: #D1FAE5;
+  color: #059669;
+}
+
+.status-badge.duplicate {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.status-badge.unused {
+  background: #F3F4F6;
+  color: var(--text-gray);
+}
+
+.status-badge.expiring {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+/* Action Buttons */
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+}
+
+.btn-icon.btn-danger:hover {
+  border-color: #DC2626;
+  color: #DC2626;
+}
+
+/* ====== PAGINATION ====== */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.btn-page {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-page:hover:not(.disabled) {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+}
+
+.btn-page.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.page-num {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  font-size: 14px;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-num:hover {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+}
+
+.page-num.active {
+  background: var(--btn-black);
+  color: white;
+  border-color: var(--btn-black);
+}
+
+.page-dots {
+  display: flex;
+  align-items: center;
+  color: var(--text-gray);
+  font-size: 14px;
+}
+
+/* ====== SUMMARY ====== */
+.summary-section {
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  padding: 32px 48px;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.summary-value {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.summary-value.gold {
+  color: var(--text-gold);
+}
+
+.summary-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border-light);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1200px) {
+  .list-header,
+  .list-row {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+  
+  .col-users,
+  .col-renewal {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box {
+    max-width: none;
+  }
+  
+  .filter-group {
+    flex-wrap: wrap;
+  }
+  
+  .list-header {
+    display: none;
+  }
+  
+  .list-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 20px;
+  }
+  
+  .col-action {
+    justify-self: start;
+  }
+  
+  .summary-card {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+  }
+  
+  .summary-divider {
+    width: 100%;
+    height: 1px;
+  }
+  
+  .pagination {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
